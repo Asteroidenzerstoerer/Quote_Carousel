@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive of Wisdom</title>
+    <style>
+        body {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+             .center-content {
+                text-align: center;
+        } 
+        .arrow {
+            font-size: 2rem;
+            cursor: pointer;
+            user-select: none;
+            padding: 0 20px;
+        }
+        .image-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-content">        
+            <h2 id="subtitle">Nero au Augustus</h2>
+        <p  id="quote">Strafe kann nur nach einem Sieg vergeben werden.</p>     
+    <div class="image-row">
+        <span class="arrow" id="left_arrow">&#8592;</span>
+        <img id="image" src = "images/nero2.jpg" alt="Nero au Augustus, Archgovenor of planet Mars">
+        <span class="arrow" id="right_arrow">&#8594;</span>
+    </div>
+    </div>
+    <script>
+        // Slide date
+        const slides = [
+           {
+                
+                subtitle: "Nero au Augustus",
+                quote: "Strafe kann nur nach einem Sieg vergeben werden.",
+                img: "images/nero2.jpg",
+                alt: "Nero au Augustus, Archgovenor of planet Mars",
+                width: "20%"
+            },
+             {  
+                subtitle: "Rick Sanchez",
+                quote: "Euer Buhen ist bedeutungslos, ich weiß wofür ihr jubelt.",
+                img: "images/Rick.jpg",
+                alt: "Rick being Rick",
+                width: "60%"
+            },
+             {  
+                subtitle: "Darrow von Lykos, der Schnitter",
+                quote: "Die Tradition ist die Krone des Tyrannen.",
+                img: "images/Darrow.jpg",
+                alt: "Darrow in a space suit",
+                width: "50%"
+            },
+        ];
+
+   let current = 0;
+
+        function showSlide(index) {
+          
+            document.getElementById('subtitle').textContent = slides[index].subtitle;
+            document.getElementById('quote').textContent = slides[index].quote;
+            const img = document.getElementById('image');
+            img.src = slides[index].img;
+            img.alt = slides[index].alt;
+            img.style.width = slides[index].width 
+            }
+
+            showSlide(current);
+
+        document.getElementById('left_arrow').onclick = function() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        };
+
+        document.getElementById('right_arrow').onclick = function() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        };         
+</script>
+</body>
+</html>
